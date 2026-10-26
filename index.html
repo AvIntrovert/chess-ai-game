@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Commander</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Strategy Simulator</p>
+          <h1>Chess Commander</h1>
+        </div>
+        <div class="toolbar">
+          <label>
+            Play as
+            <select id="side-select">
+              <option value="w">White</option>
+              <option value="b">Black</option>
+            </select>
+          </label>
+          <label>
+            AI Level
+            <select id="ai-level">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <button id="new-game-btn" class="primary-btn">New Game</button>
+        </div>
+      </header>
+
+      <div class="status-bar">
+        <span id="status">White to move.</span>
+      </div>
+
+      <main class="game-layout">
+        <section class="board-panel">
+          <div class="board-wrap">
+            <div id="board" class="board" aria-label="Chess board"></div>
+            <div id="rank-file-labels" class="rank-file-labels" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <aside class="info-panel">
+          <section class="card">
+            <h2>Board & pieces</h2>
+            <ul>
+              <li><strong>Board:</strong> 8×8 grid, labeled a–h and 1–8.</li>
+              <li><strong>White starts at the bottom:</strong> coordinates run from a1 to h8.</li>
+              <li><strong>Pieces:</strong> pawn, rook, knight, bishop, queen, king.</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2>How each piece moves</h2>
+            <ul class="movement-list">
+              <li><strong>Pawn:</strong> Moves forward one square, two from the starting rank, and captures diagonally.</li>
+              <li><strong>Rook:</strong> Slides any number of squares horizontally or vertically.</li>
+              <li><strong>Knight:</strong> Jumps in an L-shape: two squares one way and one square sideways.</li>
+              <li><strong>Bishop:</strong> Slides diagonally any number of squares.</li>
+              <li><strong>Queen:</strong> Combines rook and bishop movement.</li>
+              <li><strong>King:</strong> Moves one square in any direction; castling is allowed if the path is clear and the king is not in check.</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2>Special rules</h2>
+            <ul>
+              <li>Captures remove the opponent's piece from the board.</li>
+              <li>Check means the king is under attack and must respond.</li>
+              <li>Checkmate ends the game when no legal move can stop the attack.</li>
+              <li>En passant, castling, and pawn promotion are supported in the game logic.</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2>Move log</h2>
+            <ol id="move-log" class="move-log"></ol>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
